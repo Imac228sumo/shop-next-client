@@ -36,8 +36,10 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
     useEffect(() => {
       const loadCartItems = async () => {
         try {
-          const cartItems = await getCartItemsFx(`/shopping-cart/${user.userId}`)
-  
+          const cartItems = await getCartItemsFx(
+            `/shopping-cart/${user.userId}`,
+          )
+
           setShoppingCart(cartItems)
         } catch (error) {
           toast.error((error as Error).message)
@@ -55,8 +57,6 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
         ),
       )
     }, [shoppingCart])
-
-    
 
     return (
       <div className={styles.cart} ref={ref}>
