@@ -25,8 +25,24 @@ function CatalogPartPage({ query }: { query: IQueryParams }) {
   const lastCrumb = document.querySelector('.last-crumb') as HTMLElement
 
   useEffect(() => {
+    const loadBoilerPart = async () => {
+      //получаем данные с сервера
+      try {
+        const data = await getBoilerPartFx(`/products/find/${query.productId}`)
+  
+        if (!data) {
+          setError(true)
+          return
+        }
+  
+        setBoilerPart(data)
+      } catch (error) {
+        toast.error((error as Error).message)
+      }
+    }
+
     loadBoilerPart()
-  }, [router.asPath])
+  }, [router.asPath, loadBoilerPart])
 
   useEffect(() => {
     if (lastCrumb) {
@@ -34,21 +50,7 @@ function CatalogPartPage({ query }: { query: IQueryParams }) {
     }
   }, [lastCrumb, boilerPart])
 
-  const loadBoilerPart = async () => {
-    //получаем данные с сервера
-    try {
-      const data = await getBoilerPartFx(`/products/find/${query.productId}`)
-
-      if (!data) {
-        setError(true)
-        return
-      }
-
-      setBoilerPart(data)
-    } catch (error) {
-      toast.error((error as Error).message)
-    }
-  }
+  
 
   return (
     <>
