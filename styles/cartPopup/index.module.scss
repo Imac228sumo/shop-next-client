@@ -21,7 +21,7 @@
       position: absolute;
       color: #f2f2f2;
       border-radius: 50%;
-      background-color: #E0595D;
+      background-color: #e0595d;
       right: -2px;
       top: -12px;
     }
@@ -36,25 +36,25 @@
   }
 
   &__btn.dark_mode:hover &__svg svg {
-    stroke: #FFC540;
-    transition: stroke .2s ease-in-out;
+    stroke: #ffc540;
+    transition: stroke 0.2s ease-in-out;
   }
 
   &__btn.dark_mode:hover &__text {
-    color: #FFC540;
-    transition: color .2s ease-in-out;
+    color: #ffc540;
+    transition: color 0.2s ease-in-out;
   }
 
   &__svg {
     & svg {
-      stroke: #1C629E;
-      transition: stroke .2s ease-in-out;
+      stroke: #1c629e;
+      transition: stroke 0.2s ease-in-out;
     }
   }
 
   &__text {
-    color: #1C629E;
-    transition: color .2s ease-in-out;
+    color: #1c629e;
+    transition: color 0.2s ease-in-out;
   }
 
   &__popup {
@@ -78,15 +78,14 @@
       left: -245px;
     }
 
-
     &__title {
       margin: 0;
-      color: #1C629E;
+      color: #1c629e;
       font-size: 24px;
       font-weight: 400;
       padding-left: 60px;
       line-height: 44px;
-      background-image: url('/img/cart.svg');
+      background-image: url("/img/cart.svg");
       background-repeat: no-repeat;
       background-position: left center;
       margin-bottom: 12px;
@@ -100,20 +99,20 @@
       overflow-y: auto;
       padding-top: 10px;
       list-style-type: none;
-      border-top: 1px solid #E1E1E1;
+      border-top: 1px solid #e1e1e1;
 
       &::-webkit-scrollbar {
         width: 8px;
       }
 
       &::-webkit-scrollbar-track {
-        background-color: #E1E1E1;
+        background-color: #e1e1e1;
         border-radius: 5px;
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: #9E9E9E;
-        background: #9E9E9E;
+        background-color: #9e9e9e;
+        background: #9e9e9e;
         border-radius: 5px;
       }
 
@@ -143,7 +142,7 @@
             padding: 0;
 
             & svg {
-              fill: #E0595D;
+              fill: #e0595d;
             }
 
             span {
@@ -175,7 +174,7 @@
           font-size: 16px;
           line-height: 27px;
           max-width: 142px;
-          color: #4E4C4C;
+          color: #4e4c4c;
 
           &.dark_mode {
             color: #f2f2f2;
@@ -184,7 +183,7 @@
 
         &__empty {
           font-size: 14px;
-          color: #E0595D;
+          color: #e0595d;
           opacity: 0.5;
         }
 
@@ -196,7 +195,7 @@
           justify-content: space-between;
           width: 88px;
           height: 29px;
-          border: 1px solid #66B1F1;
+          border: 1px solid #66b1f1;
           border-radius: 4px;
 
           button {
@@ -220,7 +219,7 @@
 
           span {
             font-size: 14px;
-            color: #4E4C4C;
+            color: #4e4c4c;
           }
 
           &.dark_mode button svg {
@@ -258,7 +257,7 @@
     }
 
     &__footer {
-      border-top: 1px solid #E1E1E1;
+      border-top: 1px solid #e1e1e1;
       padding-top: 12px;
       display: flex;
       flex-direction: column;
@@ -272,7 +271,7 @@
 
       &__text {
         font-size: 18px;
-        color: #2D2D2D;
+        color: #2d2d2d;
 
         &.dark_mode {
           color: #f2f2f2;
@@ -282,30 +281,36 @@
       &__price {
         font-size: 24px;
         color: #205684;
-        white-space: nowrap
+        white-space: nowrap;
       }
 
       &__btn {
         cursor: pointer;
         border: 1px solid transparent;
-        background-color: #1C629E;
+        background-color: #1c629e;
         border-radius: 4px;
         padding: 10px 32px;
         font-size: 20px;
-        color: #FAFBFC;
-        transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out;
+        color: #fafbfc;
+        transition:
+          background-color 0.2s ease-in-out,
+          color 0.2s ease-in-out,
+          border-color 0.2s ease-in-out;
 
         &:disabled {
-          color: #7B7B7B;
-          background-color: #F0F0F0;
+          color: #7b7b7b;
+          background-color: #f0f0f0;
           pointer-events: none;
         }
 
         &:hover {
           background-color: #f2f2f2;
           color: #2d2d2d;
-          border-color:#2d2d2d;
-          transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out;
+          border-color: #2d2d2d;
+          transition:
+            background-color 0.2s ease-in-out,
+            color 0.2s ease-in-out,
+            border-color 0.2s ease-in-out;
         }
       }
     }

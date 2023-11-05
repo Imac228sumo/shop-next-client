@@ -1,8 +1,8 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 const Custom404 = () => (
   <div className="flex-container">
-    <div className="text-center"> 
+    <div className="text-center">
       <h1>
         <span className="fade-in" id="digit1">
           4
@@ -22,6 +22,6 @@ const Custom404 = () => (
       </Link>
     </div>
   </div>
-)
+);
 
-export default Custom404
+export default Custom404;

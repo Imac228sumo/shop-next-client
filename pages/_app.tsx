@@ -1,19 +1,19 @@
-import type { AppProps } from 'next/app'
-import { withHydrate } from 'effector-next'
-import { useEffect, useState } from 'react'
-import { ToastContainer } from 'react-toastify'
-import NextNProgress from 'nextjs-progressbar'
-import 'react-toastify/dist/ReactToastify.css'
-import '@/styles/globals.css'
+import type { AppProps } from "next/app";
+import { withHydrate } from "effector-next";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import NextNProgress from "nextjs-progressbar";
+import "react-toastify/dist/ReactToastify.css";
+import "@/styles/globals.css";
 
-const enhance = withHydrate()
+const enhance = withHydrate();
 
 function App({ Component, pageProps }: AppProps) {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     mounted && (
@@ -30,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
         />
       </>
     )
-  )
+  );
 }
 
-export default enhance(App as React.FC<AppProps>)
+export default enhance(App as React.FC<AppProps>);

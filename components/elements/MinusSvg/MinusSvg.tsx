@@ -13,6 +13,6 @@ const MinusSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+);
 
-export default MinusSvg
+export default MinusSvg;

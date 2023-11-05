@@ -28,7 +28,7 @@
 }
 
 .skeleton__item {
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
   overflow: hidden !important;
   padding: 0;
   height: 370px;
@@ -37,7 +37,6 @@
   @media (max-width: 820px) {
     height: 360px;
   }
-
 
   @media (max-width: 560px) {
     height: 277px;
@@ -51,14 +50,22 @@
 .skeleton__item__light {
   height: 100%;
   animation-duration: 1.6s;
-  background: linear-gradient(270deg, #ffffff0c 34.78%, #ffffffc2 60.33%, #ffffff0c 84.84%);
+  background: linear-gradient(
+    270deg,
+    #ffffff0c 34.78%,
+    #ffffffc2 60.33%,
+    #ffffff0c 84.84%
+  );
   animation-name: skeleton;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-
 @keyframes skeleton {
-  0% {transform: translateX(-600px)}
-  100% {transform: translateX(700px)}
+  0% {
+    transform: translateX(-600px);
+  }
+  100% {
+    transform: translateX(700px);
+  }
 }

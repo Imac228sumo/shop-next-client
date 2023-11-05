@@ -1,86 +1,86 @@
-import { useStore } from 'effector-react'
-import { toast } from 'react-toastify'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react' 
+import { useStore } from "effector-react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
   $shoppingCart,
   $totalPrice,
   setShoppingCart,
-} from '@/context/shopping-cart'
-import { formatPrice } from '@/utils/common'
-import OrderAccordion from '@/components/modules/OrderPage/OrderAccordion'
-import { $mode } from '@/context/mode'
-import { checkPaymentFx, makePaymentFx } from '@/app/api/payment'
-import { removeFromCartFx } from '@/app/api/shopping-cart'
-import { $user, $userCity } from '@/context/user'
-import styles from '@/styles/order/index.module.scss'
-import spinnerStyles from '@/styles/spinner/index.module.scss'
+} from "@/context/shopping-cart";
+import { formatPrice } from "@/utils/common";
+import OrderAccordion from "@/components/modules/OrderPage/OrderAccordion";
+import { $mode } from "@/context/mode";
+import { checkPaymentFx, makePaymentFx } from "@/app/api/payment";
+import { removeFromCartFx } from "@/app/api/shopping-cart";
+import { $user, $userCity } from "@/context/user";
+import styles from "@/styles/order/index.module.scss";
+import spinnerStyles from "@/styles/spinner/index.module.scss";
 
 const OrderPage = () => {
-  const mode = useStore($mode)
-  const user = useStore($user)
-  const userCity = useStore($userCity)
-  const shoppingCart = useStore($shoppingCart)
-  const totalPrice = useStore($totalPrice)
-  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
-  const [orderIsReady, setOrderIsReady] = useState(false)
-  const [agreement, setAgreement] = useState(false)
-  const spinner = useStore(makePaymentFx.pending)
-  const router = useRouter()
+  const mode = useStore($mode);
+  const user = useStore($user);
+  const userCity = useStore($userCity);
+  const shoppingCart = useStore($shoppingCart);
+  const totalPrice = useStore($totalPrice);
+  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const [orderIsReady, setOrderIsReady] = useState(false);
+  const [agreement, setAgreement] = useState(false);
+  const spinner = useStore(makePaymentFx.pending);
+  const router = useRouter();
 
-  const handleAgreementChange = () => setAgreement(!agreement)
+  const handleAgreementChange = () => setAgreement(!agreement);
 
   useEffect(() => {
-    const paymentId = sessionStorage.getItem('paymentId')
+    const paymentId = sessionStorage.getItem("paymentId");
 
     if (paymentId) {
-      checkPayment(paymentId)
+      checkPayment(paymentId);
     }
-  }, [])
+  }, []);
 
   const makePay = async () => {
     try {
       const data = await makePaymentFx({
-        url: '/payment',
+        url: "/payment",
         amount: totalPrice,
         description: `Заказ №1 ${
           userCity.city.length
             ? `Город: ${userCity.city}, улица: ${userCity.street}`
-            : ''
+            : ""
         }`,
-      })
+      });
 
-      sessionStorage.setItem('paymentId', data.id)
-      router.push(data.confirmation.confirmation_url)
+      sessionStorage.setItem("paymentId", data.id);
+      router.push(data.confirmation.confirmation_url);
     } catch (error) {
-      toast.error((error as Error).message)
+      toast.error((error as Error).message);
     }
-  }
+  };
 
   const checkPayment = async (paymentId: string) => {
     try {
       const data = await checkPaymentFx({
-        url: '/payment/info',
+        url: "/payment/info",
         paymentId,
-      })
+      });
 
-      if (data.status === 'succeeded') {
-        resetCart()
-        return
+      if (data.status === "succeeded") {
+        resetCart();
+        return;
       }
 
-      sessionStorage.removeItem('paymentId')
+      sessionStorage.removeItem("paymentId");
     } catch (error) {
-      console.log((error as Error).message)
-      resetCart()
+      console.log((error as Error).message);
+      resetCart();
     }
-  }
+  };
 
   const resetCart = async () => {
-    sessionStorage.removeItem('paymentId')
-    await removeFromCartFx(`/shopping-cart/all/${user.userId}`)
-    setShoppingCart([])
-  }
+    sessionStorage.removeItem("paymentId");
+    await removeFromCartFx(`/shopping-cart/all/${user.userId}`);
+    setShoppingCart([]);
+  };
 
   return (
     <section className={styles.order}>
@@ -105,7 +105,7 @@ const OrderPage = () => {
                   Товары (
                   {shoppingCart.reduce(
                     (defaultCount, item) => defaultCount + item.count,
-                    0
+                    0,
                   )}
                   )
                 </span>
@@ -125,10 +125,10 @@ const OrderPage = () => {
                 {spinner ? (
                   <span
                     className={spinnerStyles.spinner}
-                    style={{ top: '6px', left: '47%' }}
+                    style={{ top: "6px", left: "47%" }}
                   />
                 ) : (
-                  'Подтвердить заказ'
+                  "Подтвердить заказ"
                 )}
               </button>
               <label
@@ -150,7 +150,7 @@ const OrderPage = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default OrderPage
+export default OrderPage;

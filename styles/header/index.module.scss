@@ -4,7 +4,7 @@
   &__top {
     padding-top: 13px;
     padding-bottom: 14px;
-    background-color: #2D2D2D;
+    background-color: #2d2d2d;
 
     @media (max-width: 580px) {
       padding-top: 20px;
@@ -32,7 +32,7 @@
       position: absolute;
       top: -13px;
       padding-top: 60px;
-      transition: left .3s ease-in-out;
+      transition: left 0.3s ease-in-out;
       background-color: #ffffff;
       padding-left: 0;
       height: 100vh;
@@ -40,7 +40,7 @@
 
       &.open {
         left: 0;
-        transition: left .3s ease-in-out;
+        transition: left 0.3s ease-in-out;
       }
 
       &.dark_mode {
@@ -111,12 +111,12 @@
           display: block;
           font-weight: 500;
           font-size: 16px;
-          color: #FAFBFC;
-          transition: color .2s ease-in-out;
+          color: #fafbfc;
+          transition: color 0.2s ease-in-out;
 
           &:hover {
-            color: #FFC540;
-            transition: color .2s ease-in-out;
+            color: #ffc540;
+            transition: color 0.2s ease-in-out;
           }
 
           @media (max-width: 950px) {
@@ -177,21 +177,21 @@
       }
 
       &__text.dark_mode {
-        color: #FAFBFC;
+        color: #fafbfc;
       }
 
       &__text {
         max-width: 138px;
-        font-family: 'Raleway';
+        font-family: "Raleway";
         font-weight: 700;
         font-size: 18px;
         line-height: 18px;
-        color: #4E4C4C;
+        color: #4e4c4c;
 
         @media (max-width: 580px) {
           position: initial;
           width: 176px;
-          color: #FAFBFC;
+          color: #fafbfc;
         }
       }
     }
@@ -234,7 +234,7 @@
     &__btn {
       position: relative;
       background-color: #ffffff;
-      border: 1px solid #9E9E9E;
+      border: 1px solid #9e9e9e;
       border-left: none;
       border-radius: 4px;
       height: 40px;
@@ -244,7 +244,7 @@
       cursor: pointer;
 
       &__span svg {
-        fill: #4E4C4C;
+        fill: #4e4c4c;
       }
 
       &.dark_mode &__span svg {
@@ -300,7 +300,7 @@
   width: 100%;
   height: 2px;
   transition-duration: 500ms;
-  transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+  transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
 }
 
 .burger_menu span:nth-child(1) {

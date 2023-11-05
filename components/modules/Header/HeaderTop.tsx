@@ -1,18 +1,18 @@
-import Link from 'next/link'
-import { useStore } from 'effector-react'
-import CityButton from '@/components/elements/CityButton/CityButton'
-import ProfileDropdown from './ProfileDropdown'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
-import ModeToggler from '@/components/elements/ModeToggler/ModeToggler'
-import { $mode } from '@/context/mode'
-import { usePopup } from '@/hooks/usePoup'
-import styles from '@/styles/header/index.module.scss'
+import Link from "next/link";
+import { useStore } from "effector-react";
+import CityButton from "@/components/elements/CityButton/CityButton";
+import ProfileDropdown from "./ProfileDropdown";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import ModeToggler from "@/components/elements/ModeToggler/ModeToggler";
+import { $mode } from "@/context/mode";
+import { usePopup } from "@/hooks/usePoup";
+import styles from "@/styles/header/index.module.scss";
 
 const HeaderTop = () => {
-  const isMedia950 = useMediaQuery(950)
-  const { toggleOpen, open, closePopup } = usePopup() 
-  const mode = useStore($mode)
-  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
+  const isMedia950 = useMediaQuery(950);
+  const { toggleOpen, open, closePopup } = usePopup();
+  const mode = useStore($mode);
+  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
 
   return (
     <div className={styles.header__top}>
@@ -22,7 +22,7 @@ const HeaderTop = () => {
           <button
             onClick={toggleOpen}
             className={`${styles.burger_menu} ${
-              open ? styles.open : ''
+              open ? styles.open : ""
             } ${darkModeClass}`}
           >
             <span />
@@ -32,7 +32,7 @@ const HeaderTop = () => {
         )}
         <nav
           className={`${styles.header__nav} ${
-            open ? styles.open : ''
+            open ? styles.open : ""
           } ${darkModeClass}`}
         >
           <ul className={styles.header__nav__list}>
@@ -101,7 +101,7 @@ const HeaderTop = () => {
         <ProfileDropdown />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeaderTop
+export default HeaderTop;

@@ -40,7 +40,7 @@
       }
 
       span {
-        color: #2D2D2D;
+        color: #2d2d2d;
 
         &:first-child {
           margin-bottom: 5px;
@@ -65,7 +65,8 @@
       }
     }
 
-    &__btn_cart, &__btn_order {
+    &__btn_cart,
+    &__btn_order {
       text-align: center;
       font-size: 18px;
       padding: 8px 40px;
@@ -78,9 +79,9 @@
 
     &__btn_cart {
       margin-right: 24px;
-      background-color: #EBF5FD;
-      border: 1px solid #1C629E;
-      color: #1C629E;
+      background-color: #ebf5fd;
+      border: 1px solid #1c629e;
+      color: #1c629e;
 
       @media (max-width: 768px) {
         margin-right: 0;
@@ -89,7 +90,7 @@
     }
 
     &__btn_order {
-      background-color: #1C629E;
+      background-color: #1c629e;
       color: #f2f2f2;
     }
 
@@ -103,7 +104,8 @@
       right: 15px;
       top: 5px;
 
-      &::before, &::after {
+      &::before,
+      &::after {
         content: "";
         position: absolute;
         top: 0;
@@ -111,7 +113,7 @@
         width: 2px;
         height: 18px;
         border-radius: 3px;
-        background-color: #1C629E;
+        background-color: #1c629e;
       }
 
       &::before {
@@ -157,7 +159,7 @@
         position: absolute;
         top: 17px;
         z-index: 5;
-        transition: background-color .2s ease-in-out;
+        transition: background-color 0.2s ease-in-out;
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 
         @media (max-width: 800px) {
@@ -165,8 +167,8 @@
         }
 
         &:hover {
-          background-color: #FFCF62;
-          transition: background-color .2s ease-in-out;
+          background-color: #ffcf62;
+          transition: background-color 0.2s ease-in-out;
         }
 
         span {
@@ -176,7 +178,7 @@
           position: relative;
 
           svg {
-            fill: #4E4C4C;
+            fill: #4e4c4c;
             position: absolute;
             top: 16px;
             left: 16px;
@@ -184,7 +186,7 @@
         }
 
         &.dark_mode {
-          background-color: #4E4C4C;
+          background-color: #4e4c4c;
 
           span svg {
             fill: #f2f2f2;
@@ -192,7 +194,7 @@
 
           &:hover {
             background-color: #2d2d2d;
-            transition: background-color .2s ease-in-out;
+            transition: background-color 0.2s ease-in-out;
           }
         }
       }
@@ -243,7 +245,7 @@
   }
 
   &__title {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-weight: 500;
     font-size: 55px;
     margin: 0;
@@ -277,7 +279,9 @@
     border-radius: 4px;
     overflow: hidden;
     padding: 24px 16px;
-    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
 
     @media (max-width: 560px) {
       padding: 16px 8px;
@@ -285,7 +289,9 @@
 
     &:hover {
       transform: scale(1.03);
-      transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      transition:
+        transform 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out;
     }
 
     img {
@@ -304,7 +310,7 @@
       font-weight: 400;
       margin-bottom: 24px;
       font-size: 18px;
-      color: #4E4C4C;
+      color: #4e4c4c;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -319,7 +325,7 @@
       display: block;
       margin-bottom: 24px;
       font-size: 14px;
-      color: #7B7B7B;
+      color: #7b7b7b;
 
       @media (max-width: 560px) {
         font-size: 13px;
@@ -330,7 +336,7 @@
     &__price {
       font-weight: 500;
       font-size: 20px;
-      color: #2D2D2D;
+      color: #2d2d2d;
 
       @media (max-width: 560px) {
         font-size: 17px;
@@ -342,7 +348,7 @@
     }
 
     &.dark_mode &__code {
-      color: #7B7B7B;
+      color: #7b7b7b;
     }
 
     &.dark_mode &__price {
@@ -356,7 +362,7 @@
 
   &__parts {
     &__title {
-      font-family: 'Raleway';
+      font-family: "Raleway";
       font-weight: 500;
       font-size: 36px;
       margin: 0;
@@ -389,7 +395,7 @@
       font-size: 14px;
       max-width: 1076px;
       line-height: 22px;
-      color: #4E4C4C;
+      color: #4e4c4c;
 
       &.dark_mode {
         color: #f2f2f2;

@@ -26,6 +26,6 @@ const ShoppingCartSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-)
+);
 
-export default ShoppingCartSvg
+export default ShoppingCartSvg;

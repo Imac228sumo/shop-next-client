@@ -1,6 +1,6 @@
 .footer {
   padding-top: 54px;
-  background-color: #2D2D2D;
+  background-color: #2d2d2d;
 
   @media (max-width: 500px) {
     padding-top: 24px;
@@ -72,10 +72,10 @@
 
         &__text {
           max-width: 138px;
-          font-family: 'Raleway';
+          font-family: "Raleway";
           font-weight: 700;
           font-size: 18px;
-          color: #FAFBFC;
+          color: #fafbfc;
         }
       }
 
@@ -90,11 +90,11 @@
           }
 
           &__link {
-            color: #CDCBCB;
+            color: #cdcbcb;
 
             &:hover {
-              color: #FFC540;
-              transition: color .2s ease-in-out;
+              color: #ffc540;
+              transition: color 0.2s ease-in-out;
             }
           }
         }
@@ -119,8 +119,8 @@
               padding-left: 22px;
               font-weight: 500;
               font-size: 18px;
-              color: #FAFBFC;
-              transition: color .2s ease-in-out;
+              color: #fafbfc;
+              transition: color 0.2s ease-in-out;
             }
 
             &:nth-child(3) {
@@ -128,21 +128,21 @@
               top: 25px;
               left: 0;
 
-               & svg {
-                stroke: #FAFBFC;
-                transition: stroke .2s ease-in-out;
-               }
+              & svg {
+                stroke: #fafbfc;
+                transition: stroke 0.2s ease-in-out;
+              }
             }
           }
 
           &:hover span {
-            color: #FFC540;
-            transition: color .2s ease-in-out;
+            color: #ffc540;
+            transition: color 0.2s ease-in-out;
           }
 
           &:hover span svg {
-            stroke: #FFC540;
-            transition: stroke .2s ease-in-out;
+            stroke: #ffc540;
+            transition: stroke 0.2s ease-in-out;
           }
         }
       }
@@ -158,7 +158,7 @@
         margin-bottom: 16px;
         font-weight: 500;
         font-size: 18px;
-        color: #FAFBFC;
+        color: #fafbfc;
       }
     }
 
@@ -216,21 +216,21 @@
           }
 
           .footer__top__item__title::before {
-            content: '';
+            content: "";
             width: 12px;
             height: 6px;
             position: absolute;
             top: 8px;
             right: 0;
-            background-image: url('/img/arrow.svg');
+            background-image: url("/img/arrow.svg");
             background-repeat: no-repeat;
             background-position: right center;
-            transition: transform .3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
           }
 
           .footer__top__item__title.open:before {
             transform: rotate(180deg);
-            transition: transform .3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
           }
         }
       }
@@ -320,7 +320,7 @@
         margin: 0;
         margin-right: 24px;
         font-weight: 400;
-        color: #FAFBFC;
+        color: #fafbfc;
 
         @media (max-width: 1140px) {
           font-size: 16px;
@@ -417,26 +417,26 @@
           }
 
           &_vk {
-            background-image: url('/img/vk.svg');
+            background-image: url("/img/vk.svg");
           }
 
           &_fb {
-            background-image: url('/img/fb.svg');
+            background-image: url("/img/fb.svg");
           }
 
           &_inst {
-            background-image: url('/img/inst.svg');
+            background-image: url("/img/inst.svg");
           }
 
           &_ytb {
-            background-image: url('/img/ytb.svg');
+            background-image: url("/img/ytb.svg");
           }
         }
       }
 
       &__copyright {
         font-size: 12px;
-        color: #EDEDED;
+        color: #ededed;
       }
     }
   }

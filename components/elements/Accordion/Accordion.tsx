@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { IAccordion } from '@/types/common'
+import * as React from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IAccordion } from "@/types/common";
 
 const Accordion = ({
   children,
@@ -12,15 +12,15 @@ const Accordion = ({
   hideArrowClass,
   callback,
 }: IAccordion) => {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(false);
 
   const toggleAccordion = () => {
     if (callback) {
-      callback(expanded)
+      callback(expanded);
     }
 
-    setExpanded(!expanded)
-  }
+    setExpanded(!expanded);
+  };
 
   return (
     <>
@@ -32,14 +32,14 @@ const Accordion = ({
             initial={false}
             onClick={toggleAccordion}
             className={`${titleClass} ${
-              expanded ? (isMobileForFilters ? '' : arrowOpenClass) : ''
+              expanded ? (isMobileForFilters ? "" : arrowOpenClass) : ""
             }`}
           >
             {title}
           </motion.button>
         )
       ) : (
-        ''
+        ""
       )}
       <AnimatePresence initial={false}>
         {(isMobileForFilters || expanded) && (
@@ -49,10 +49,10 @@ const Accordion = ({
             animate="open"
             exit="collapsed"
             variants={{
-              open: { opacity: 1, height: 'auto' },
+              open: { opacity: 1, height: "auto" },
               collapsed: { opacity: 0, height: 0 },
             }}
-            style={{ overflow: 'hidden' }}
+            style={{ overflow: "hidden" }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             {children}
@@ -60,7 +60,7 @@ const Accordion = ({
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-export default Accordion
+export default Accordion;

@@ -1,5 +1,5 @@
-import { IFeedbackInput } from '@/types/feedbackForm'
-import styles from '@/styles/feedbackForm/index.module.scss'
+import { IFeedbackInput } from "@/types/feedbackForm";
+import styles from "@/styles/feedbackForm/index.module.scss";
 
 const EmailInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
   <label className={`${styles.feedback_form__form__label} ${darkModeClass}`}>
@@ -8,11 +8,11 @@ const EmailInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
       className={styles.feedback_form__form__input}
       type="email"
       placeholder="ivan@gmail.com"
-      {...register('email', {
-        required: 'Введите Email!',
+      {...register("email", {
+        required: "Введите Email!",
         pattern: {
           value: /\S+@\S+\.\S+/,
-          message: 'Неправильный Email!',
+          message: "Неправильный Email!",
         },
       })}
     />
@@ -20,6 +20,6 @@ const EmailInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
       <span className={styles.error_alert}>{errors.email?.message}</span>
     )}
   </label>
-)
+);
 
-export default EmailInput
+export default EmailInput;

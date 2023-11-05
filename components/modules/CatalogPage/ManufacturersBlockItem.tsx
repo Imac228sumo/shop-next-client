@@ -1,22 +1,22 @@
-import { useStore } from 'effector-react'
-import { motion } from 'framer-motion'
-import { $mode } from '@/context/mode'
+import { useStore } from "effector-react";
+import { motion } from "framer-motion";
+import { $mode } from "@/context/mode";
 import {
   IFilterCheckboxItem,
   IManufacturersBlockItemProps,
-} from '@/types/catalog'
-import DeleteSvg from '@/components/elements/DeleteSvg/DeleteSvg'
-import styles from '@/styles/catalog/index.module.scss'
+} from "@/types/catalog";
+import DeleteSvg from "@/components/elements/DeleteSvg/DeleteSvg";
+import styles from "@/styles/catalog/index.module.scss";
 
 const ManufacturersBlockItem = ({
   item,
   event,
 }: IManufacturersBlockItemProps) => {
-  const mode = useStore($mode)
-  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
+  const mode = useStore($mode);
+  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
 
   const removeFilter = () =>
-    event({ checked: !item.checked, id: item.id } as IFilterCheckboxItem)
+    event({ checked: !item.checked, id: item.id } as IFilterCheckboxItem);
 
   return (
     <motion.li
@@ -37,7 +37,7 @@ const ManufacturersBlockItem = ({
         </span>
       </button>
     </motion.li>
-  )
-}
+  );
+};
 
-export default ManufacturersBlockItem
+export default ManufacturersBlockItem;

@@ -1,36 +1,36 @@
-import { useStore } from 'effector-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
-import { $mode } from '@/context/mode'
-import { $shoppingCart, $totalPrice } from '@/context/shopping-cart'
-import { IOrderAccordionProps } from '@/types/order'
-import DoneSvg from '@/components/elements/DoneSvg/DoneSvg'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
-import EditSvg from '@/components/elements/EditSvg/EditSvg'
-import CartPopupItem from '../Header/CartPopup/CartPopupItem'
-import OrderItem from './OrderItem'
-import { formatPrice } from '@/utils/common'
-import styles from '@/styles/order/index.module.scss'
- 
+import { useStore } from "effector-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { $mode } from "@/context/mode";
+import { $shoppingCart, $totalPrice } from "@/context/shopping-cart";
+import { IOrderAccordionProps } from "@/types/order";
+import DoneSvg from "@/components/elements/DoneSvg/DoneSvg";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import EditSvg from "@/components/elements/EditSvg/EditSvg";
+import CartPopupItem from "../Header/CartPopup/CartPopupItem";
+import OrderItem from "./OrderItem";
+import { formatPrice } from "@/utils/common";
+import styles from "@/styles/order/index.module.scss";
+
 const OrderAccordion = ({
   setOrderIsReady,
   showDoneIcon,
 }: IOrderAccordionProps) => {
-  const mode = useStore($mode)
-  const shoppingCart = useStore($shoppingCart)
-  const totalPrice = useStore($totalPrice)
-  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
-  const isMedia550 = useMediaQuery(550)
-  const [expanded, setExpanded] = useState(true)
+  const mode = useStore($mode);
+  const shoppingCart = useStore($shoppingCart);
+  const totalPrice = useStore($totalPrice);
+  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const isMedia550 = useMediaQuery(550);
+  const [expanded, setExpanded] = useState(true);
 
   const openAccordion = () => {
-    setOrderIsReady(false)
-    setExpanded(true)
-  }
+    setOrderIsReady(false);
+    setExpanded(true);
+  };
   const closeAccordion = () => {
-    setOrderIsReady(true)
-    setExpanded(false)
-  }
+    setOrderIsReady(true);
+    setExpanded(false);
+  };
 
   return (
     <>
@@ -53,7 +53,7 @@ const OrderAccordion = ({
           <span>
             <EditSvg />
           </span>
-          {isMedia550 ? '' : 'Редактировать'}
+          {isMedia550 ? "" : "Редактировать"}
         </button>
       </motion.div>
       <AnimatePresence initial={false}>
@@ -64,10 +64,10 @@ const OrderAccordion = ({
             animate="open"
             exit="collapsed"
             variants={{
-              open: { opacity: 1, height: 'auto' },
+              open: { opacity: 1, height: "auto" },
               collapsed: { opacity: 0, height: 0 },
             }}
-            style={{ overflow: 'hidden' }}
+            style={{ overflow: "hidden" }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             <div className={`${styles.order__cart__content} ${darkModeClass}`}>
@@ -78,7 +78,7 @@ const OrderAccordion = ({
                       <CartPopupItem key={item.id} item={item} />
                     ) : (
                       <OrderItem item={item} key={item.id} />
-                    )
+                    ),
                   )
                 ) : (
                   <li className={styles.order__cart__empty}>
@@ -114,7 +114,7 @@ const OrderAccordion = ({
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-export default OrderAccordion
+export default OrderAccordion;

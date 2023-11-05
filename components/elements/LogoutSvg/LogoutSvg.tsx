@@ -25,6 +25,6 @@ const LogoutSvg = () => (
       </g>
     </g>
   </svg>
-)
+);
 
-export default LogoutSvg
+export default LogoutSvg;

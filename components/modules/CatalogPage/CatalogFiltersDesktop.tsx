@@ -1,4 +1,4 @@
-import { useStore } from 'effector-react'
+import { useStore } from "effector-react";
 import {
   $boilerManufacturers,
   $partsManufacturers,
@@ -6,17 +6,17 @@ import {
   setPartsManufacturers,
   updateBoilerManufacturer,
   updatePartsManufacturer,
-} from '@/context/boilerParts'
-import { $mode } from '@/context/mode'
-import FilterManufacturerAccordion from './FilterManufacturerAccordion'
-import Accordion from '@/components/elements/Accordion/Accordion'
-import PriceRange from './PriceRange'
-import { ICatalogFilterDesktopProps } from '@/types/catalog'
-import spinnerStyles from '@/styles/spinner/index.module.scss'
-import styles from '@/styles/catalog/index.module.scss'
+} from "@/context/boilerParts";
+import { $mode } from "@/context/mode";
+import FilterManufacturerAccordion from "./FilterManufacturerAccordion";
+import Accordion from "@/components/elements/Accordion/Accordion";
+import PriceRange from "./PriceRange";
+import { ICatalogFilterDesktopProps } from "@/types/catalog";
+import spinnerStyles from "@/styles/spinner/index.module.scss";
+import styles from "@/styles/catalog/index.module.scss";
 
 const CatalogFiltersDesktop = ({
-  priceRange, 
+  priceRange,
   setPriceRange,
   setIsPriceRangeChanged,
   resetFilterBtnDisabled,
@@ -24,10 +24,10 @@ const CatalogFiltersDesktop = ({
   resetFilters,
   applyFilters,
 }: ICatalogFilterDesktopProps) => {
-  const mode = useStore($mode)
-  const boilerManufacturers = useStore($boilerManufacturers)
-  const partsManufacturers = useStore($partsManufacturers)
-  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
+  const mode = useStore($mode);
+  const boilerManufacturers = useStore($boilerManufacturers);
+  const partsManufacturers = useStore($partsManufacturers);
+  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
 
   return (
     <div className={`${styles.catalog__bottom__filters} ${darkModeClass}`}>
@@ -77,10 +77,10 @@ const CatalogFiltersDesktop = ({
           {spinner ? (
             <span
               className={spinnerStyles.spinner}
-              style={{ top: 6, left: '47%' }}
+              style={{ top: 6, left: "47%" }}
             />
           ) : (
-            'Показать'
+            "Показать"
           )}
         </button>
         <button
@@ -92,7 +92,7 @@ const CatalogFiltersDesktop = ({
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CatalogFiltersDesktop
+export default CatalogFiltersDesktop;
