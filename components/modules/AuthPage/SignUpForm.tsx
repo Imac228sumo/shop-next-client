@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useStore } from 'effector-react'
 import { IInputs } from '@/types/auth'
-// import { $mode } from '@/context/mode'
 import NameInput from '@/components/elements/AuthPage/NameInput'
 import EmailInput from '@/components/elements/AuthPage/EmailInput'
 import PasswordInput from '@/components/elements/AuthPage/PasswordInput'
@@ -11,7 +10,6 @@ import { showAuthError } from '@/utils/errors'
 import { $mode } from '@/context/mode'
 import styles from '@/styles/auth/index.module.scss'
 import spinnerStyles from '@/styles/spinner/index.module.scss'
-import { toast } from 'react-toastify'
 
 const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
   const [spinner, setSpinner] = useState(false)
@@ -43,7 +41,6 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
       resetField('password')
       switchForm()
     } catch (error) {
-      // toast.error((error as Error).message)
       showAuthError(error)
     } finally {
       setSpinner(false)

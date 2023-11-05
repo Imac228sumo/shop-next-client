@@ -38,90 +38,93 @@ const CatalogFilters = ({
   const router = useRouter()
 
   useEffect(() => {
+    const applyFiltersFromQuery = async () => {
+      try {
+        const {
+          isValidBoilerQuery,
+          isValidPartsQuery,
+          isValidPriceQuery,
+          partsQueryValue,
+          priceFromQueryValue,
+          boilerQueryValue,
+          priceToQueryValue,
+        } = checkQueryParams(router)
+
+        const boilerQuery = `&product=${getQueryParamOnFirstRender(
+          'product',
+          router,
+        )}`
+        const partsQuery = `&parts=${getQueryParamOnFirstRender(
+          'parts',
+          router,
+        )}`
+        const priceQuery = `&priceFrom=${priceFromQueryValue}&priceTo=${priceToQueryValue}`
+
+        if (isValidBoilerQuery && isValidPartsQuery && isValidPriceQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
+            setBoilerManufacturersFromQuery(boilerQueryValue)
+            setPartsManufacturersFromQuery(partsQueryValue)
+          }, `${currentPage}${priceQuery}${boilerQuery}${partsQuery}`)
+          return
+        }
+
+        if (isValidPriceQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
+          }, `${currentPage}${priceQuery}`)
+        }
+
+        if (isValidBoilerQuery && isValidPartsQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            setIsFilterInQuery(true)
+            setBoilerManufacturersFromQuery(boilerQueryValue)
+            setPartsManufacturersFromQuery(partsQueryValue)
+          }, `${currentPage}${boilerQuery}${partsQuery}`)
+          return
+        }
+
+        if (isValidBoilerQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            setIsFilterInQuery(true)
+            setBoilerManufacturersFromQuery(boilerQueryValue)
+          }, `${currentPage}${boilerQuery}`)
+        }
+
+        if (isValidPartsQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            setIsFilterInQuery(true)
+            setPartsManufacturersFromQuery(partsQueryValue)
+          }, `${currentPage}${partsQuery}`)
+        }
+
+        if (isValidPartsQuery && isValidPriceQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
+            setPartsManufacturersFromQuery(partsQueryValue)
+          }, `${currentPage}${priceQuery}${partsQuery}`)
+        }
+
+        if (isValidBoilerQuery && isValidPriceQuery) {
+          updateParamsAndFiltersFromQuery(() => {
+            updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
+            setBoilerManufacturersFromQuery(boilerQueryValue)
+          }, `${currentPage}${priceQuery}${boilerQuery}`)
+        }
+      } catch (error) {
+        const err = error as Error
+
+        if (err.message === 'URI malformed') {
+          toast.warning('Неправильный url для фильтров')
+          return
+        }
+
+        toast.error(err.message)
+      }
+    }
+
     applyFiltersFromQuery()
   }, [])
-
-  const applyFiltersFromQuery = async () => {
-    try {
-      const {
-        isValidBoilerQuery,
-        isValidPartsQuery,
-        isValidPriceQuery,
-        partsQueryValue,
-        priceFromQueryValue,
-        boilerQueryValue,
-        priceToQueryValue,
-      } = checkQueryParams(router)
-
-      const boilerQuery = `&product=${getQueryParamOnFirstRender(
-        'product',
-        router,
-      )}`
-      const partsQuery = `&parts=${getQueryParamOnFirstRender('parts', router)}`
-      const priceQuery = `&priceFrom=${priceFromQueryValue}&priceTo=${priceToQueryValue}`
-
-      if (isValidBoilerQuery && isValidPartsQuery && isValidPriceQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
-          setBoilerManufacturersFromQuery(boilerQueryValue)
-          setPartsManufacturersFromQuery(partsQueryValue)
-        }, `${currentPage}${priceQuery}${boilerQuery}${partsQuery}`)
-        return
-      }
-
-      if (isValidPriceQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
-        }, `${currentPage}${priceQuery}`)
-      }
-
-      if (isValidBoilerQuery && isValidPartsQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          setIsFilterInQuery(true)
-          setBoilerManufacturersFromQuery(boilerQueryValue)
-          setPartsManufacturersFromQuery(partsQueryValue)
-        }, `${currentPage}${boilerQuery}${partsQuery}`)
-        return
-      }
-
-      if (isValidBoilerQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          setIsFilterInQuery(true)
-          setBoilerManufacturersFromQuery(boilerQueryValue)
-        }, `${currentPage}${boilerQuery}`)
-      }
-
-      if (isValidPartsQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          setIsFilterInQuery(true)
-          setPartsManufacturersFromQuery(partsQueryValue)
-        }, `${currentPage}${partsQuery}`)
-      }
-
-      if (isValidPartsQuery && isValidPriceQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
-          setPartsManufacturersFromQuery(partsQueryValue)
-        }, `${currentPage}${priceQuery}${partsQuery}`)
-      }
-
-      if (isValidBoilerQuery && isValidPriceQuery) {
-        updateParamsAndFiltersFromQuery(() => {
-          updatePriceFromQuery(+priceFromQueryValue, +priceToQueryValue)
-          setBoilerManufacturersFromQuery(boilerQueryValue)
-        }, `${currentPage}${priceQuery}${boilerQuery}`)
-      }
-    } catch (error) {
-      const err = error as Error
-
-      if (err.message === 'URI malformed') {
-        toast.warning('Неправильный url для фильтров')
-        return
-      }
-
-      toast.error(err.message)
-    }
-  }
 
   const updatePriceFromQuery = (priceFrom: number, priceTo: number) => {
     setIsFilterInQuery(true)

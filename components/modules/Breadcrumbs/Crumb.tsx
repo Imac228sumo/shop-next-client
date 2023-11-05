@@ -28,7 +28,6 @@ const Crumb = ({
 
     handleTextGenerate()
   }, [textGenerator])
-
   if (last) {
     return (
       <a>

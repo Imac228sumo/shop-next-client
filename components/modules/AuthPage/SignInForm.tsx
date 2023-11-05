@@ -10,7 +10,6 @@ import { showAuthError } from '@/utils/errors'
 import { $mode } from '@/context/mode'
 import styles from '@/styles/auth/index.module.scss'
 import spinnerStyles from '@/styles/spinner/index.module.scss'
-import { toast } from 'react-toastify'
 
 const SignInForm = () => {
   const [spinner, setSpinner] = useState(false)
@@ -38,7 +37,6 @@ const SignInForm = () => {
       resetField('password')
       route.push('/dashboard')
     } catch (error) {
-      // toast.error((error as Error).message)
       showAuthError(error)
     } finally {
       setSpinner(false)

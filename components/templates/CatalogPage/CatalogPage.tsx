@@ -61,63 +61,63 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const { toggleOpen, open, closePopup } = usePopup()
 
   useEffect(() => {
+    const loadBoilerParts = async () => {
+      try {
+        setSpinner(true)
+        const data = await getBoilerPartsFx('/products?limit=20&offset=0')
+
+        if (!isValidOffset) {
+          router.replace({
+            query: {
+              offset: 1,
+            },
+          })
+
+          resetPagination(data)
+          return
+        }
+
+        if (isValidOffset) {
+          if (+query.offset > Math.ceil(data.count / 20)) {
+            router.push(
+              {
+                query: {
+                  ...query,
+                  offset: 1,
+                },
+              },
+              undefined,
+              { shallow: true },
+            )
+
+            setCurrentPage(0)
+            setBoilerParts(isFilterInQuery ? filteredBoilerParts : data)
+            return
+          }
+
+          const offset = +query.offset - 1
+          const result = await getBoilerPartsFx(
+            `/products?limit=20&offset=${offset}`,
+          )
+
+          setCurrentPage(offset)
+          setBoilerParts(isFilterInQuery ? filteredBoilerParts : result)
+          return
+        }
+
+        setCurrentPage(0)
+        setBoilerParts(isFilterInQuery ? filteredBoilerParts : data)
+      } catch (error) {
+        toast.error((error as Error).message)
+      } finally {
+        setTimeout(() => setSpinner(false), 1000)
+      }
+    }
+
     loadBoilerParts()
   }, [filteredBoilerParts, isFilterInQuery])
 
   console.log(boilerParts.rows)
-
-  const loadBoilerParts = async () => {
-    try {
-      setSpinner(true)
-      const data = await getBoilerPartsFx('/products?limit=20&offset=0')
-
-      if (!isValidOffset) {
-        router.replace({
-          query: {
-            offset: 1,
-          },
-        })
-
-        resetPagination(data)
-        return
-      }
-
-      if (isValidOffset) {
-        if (+query.offset > Math.ceil(data.count / 20)) {
-          router.push(
-            {
-              query: {
-                ...query,
-                offset: 1,
-              },
-            },
-            undefined,
-            { shallow: true },
-          )
-
-          setCurrentPage(0)
-          setBoilerParts(isFilterInQuery ? filteredBoilerParts : data)
-          return
-        }
-
-        const offset = +query.offset - 1
-        const result = await getBoilerPartsFx(
-          `/products?limit=20&offset=${offset}`,
-        )
-
-        setCurrentPage(offset)
-        setBoilerParts(isFilterInQuery ? filteredBoilerParts : result)
-        return
-      }
-
-      setCurrentPage(0)
-      setBoilerParts(isFilterInQuery ? filteredBoilerParts : data)
-    } catch (error) {
-      toast.error((error as Error).message)
-    } finally {
-      setTimeout(() => setSpinner(false), 1000)
-    }
-  }
 
   const resetPagination = (data: IBoilerParts) => {
     setCurrentPage(0)
