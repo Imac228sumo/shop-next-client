@@ -17,17 +17,19 @@ const Crumb = ({
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   useEffect(() => {
+    const handleTextGenerate = async () => {
+      if (!Boolean(textGenerator)) {
+        return
+      }
+  
+      const finalText = await textGenerator()
+      setText(finalText)
+    }
+
     handleTextGenerate()
   }, [textGenerator])
 
-  const handleTextGenerate = async () => {
-    if (!Boolean(textGenerator)) {
-      return
-    }
-
-    const finalText = await textGenerator()
-    setText(finalText)
-  }
+  
 
   if (last) {
     return (

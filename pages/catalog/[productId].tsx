@@ -42,7 +42,7 @@ function CatalogPartPage({ query }: { query: IQueryParams }) {
     }
 
     loadBoilerPart()
-  }, [router.asPath, loadBoilerPart])
+  }, [router.asPath])
 
   useEffect(() => {
     if (lastCrumb) {
