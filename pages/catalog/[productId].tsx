@@ -29,12 +29,12 @@ function CatalogPartPage({ query }: { query: IQueryParams }) {
       //получаем данные с сервера
       try {
         const data = await getBoilerPartFx(`/products/find/${query.productId}`)
-  
+
         if (!data) {
           setError(true)
           return
         }
-  
+
         setBoilerPart(data)
       } catch (error) {
         toast.error((error as Error).message)
@@ -49,8 +49,6 @@ function CatalogPartPage({ query }: { query: IQueryParams }) {
       lastCrumb.textContent = boilerPart.name
     }
   }, [lastCrumb, boilerPart])
-
-  
 
   return (
     <>

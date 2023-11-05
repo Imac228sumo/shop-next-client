@@ -21,15 +21,13 @@ const Crumb = ({
       if (!Boolean(textGenerator)) {
         return
       }
-  
+
       const finalText = await textGenerator()
       setText(finalText)
     }
 
     handleTextGenerate()
   }, [textGenerator])
-
-  
 
   if (last) {
     return (
