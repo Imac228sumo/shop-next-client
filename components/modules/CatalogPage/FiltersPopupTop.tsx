@@ -1,7 +1,7 @@
-import { useStore } from "effector-react";
-import { $mode } from "@/context/mode";
-import { IFiltersPopupTop } from "@/types/catalog";
-import styles from "@/styles/catalog/index.module.scss";
+import { useStore } from 'effector-react'
+import { $mode } from '@/context/mode'
+import { IFiltersPopupTop } from '@/types/catalog'
+import styles from '@/styles/catalog/index.module.scss'
 
 const FiltersPopupTop = ({
   title,
@@ -10,8 +10,8 @@ const FiltersPopupTop = ({
   resetFilterBtnDisabled,
   closePopup,
 }: IFiltersPopupTop) => {
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   return (
     <div className={`${styles.catalog__bottom__filters__top} ${darkModeClass}`}>
@@ -29,7 +29,7 @@ const FiltersPopupTop = ({
         {resetBtnText}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default FiltersPopupTop;
+export default FiltersPopupTop

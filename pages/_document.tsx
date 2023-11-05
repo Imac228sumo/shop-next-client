@@ -1,6 +1,6 @@
-import Document from "next/document";
-import { withFork } from "effector-next";
+import Document from 'next/document'
+import { withFork } from 'effector-next'
 
-const enhance = withFork({ debug: false });
+const enhance = withFork({ debug: false })
 
-export default enhance(Document);
+export default enhance(Document)

@@ -7,7 +7,7 @@
 
   &__title {
     margin-bottom: 48px;
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-weight: 500;
     font-size: 36px;
     color: #2d2d2d;
@@ -67,7 +67,7 @@
         color: #205684;
         padding-left: 60px;
         line-height: 44px;
-        background-image: url("/img/cart.svg");
+        background-image: url('/img/cart.svg');
         background-repeat: no-repeat;
         background-position: left center;
 
@@ -464,7 +464,7 @@
       }
 
       span:before {
-        content: "";
+        content: '';
         -webkit-appearance: none;
         background-color: transparent;
         border: 2px solid #f0f0f0;
@@ -484,7 +484,7 @@
       }
 
       input:checked + span:after {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         top: 4px;

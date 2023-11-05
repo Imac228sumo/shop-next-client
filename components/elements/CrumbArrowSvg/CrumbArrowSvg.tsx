@@ -10,6 +10,6 @@ const CrumbArrowSvg = () => (
   >
     <path d="M2.82898 4.99984L-1.71661e-05 7.82784L1.41398 9.24284L5.65698 4.99984L1.41398 0.756836L-1.71661e-05 2.17184L2.82898 4.99984Z" />
   </svg>
-);
+)
 
-export default CrumbArrowSvg;
+export default CrumbArrowSvg

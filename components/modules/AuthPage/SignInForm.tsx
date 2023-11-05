@@ -1,49 +1,49 @@
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { useStore } from "effector-react";
-import { useRouter } from "next/router";
-import { IInputs } from "@/types/auth";
-import NameInput from "@/components/elements/AuthPage/NameInput";
-import PasswordInput from "@/components/elements/AuthPage/PasswordInput";
-import { singInFx } from "@/app/api/auth";
-import { showAuthError } from "@/utils/errors";
-import { $mode } from "@/context/mode";
-import styles from "@/styles/auth/index.module.scss";
-import spinnerStyles from "@/styles/spinner/index.module.scss";
-import { toast } from "react-toastify";
+import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { useStore } from 'effector-react'
+import { useRouter } from 'next/router'
+import { IInputs } from '@/types/auth'
+import NameInput from '@/components/elements/AuthPage/NameInput'
+import PasswordInput from '@/components/elements/AuthPage/PasswordInput'
+import { singInFx } from '@/app/api/auth'
+import { showAuthError } from '@/utils/errors'
+import { $mode } from '@/context/mode'
+import styles from '@/styles/auth/index.module.scss'
+import spinnerStyles from '@/styles/spinner/index.module.scss'
+import { toast } from 'react-toastify'
 
 const SignInForm = () => {
-  const [spinner, setSpinner] = useState(false);
+  const [spinner, setSpinner] = useState(false)
   const {
     register,
     formState: { errors },
     handleSubmit,
     resetField,
-  } = useForm<IInputs>();
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
-  const route = useRouter();
+  } = useForm<IInputs>()
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
+  const route = useRouter()
 
   const onSubmit = async (data: IInputs) => {
-    console.log(data);
+    console.log(data)
     try {
-      setSpinner(true);
+      setSpinner(true)
       await singInFx({
-        url: "/users/login",
+        url: '/users/login',
         username: data.name,
         password: data.password,
-      });
+      })
 
-      resetField("name");
-      resetField("password");
-      route.push("/dashboard");
+      resetField('name')
+      resetField('password')
+      route.push('/dashboard')
     } catch (error) {
       // toast.error((error as Error).message)
-      showAuthError(error);
+      showAuthError(error)
     } finally {
-      setSpinner(false);
+      setSpinner(false)
     }
-  };
+  }
 
   return (
     <form
@@ -58,10 +58,10 @@ const SignInForm = () => {
       <button
         className={`${styles.form__button} ${styles.button} ${styles.submit} ${darkModeClass}`}
       >
-        {spinner ? <div className={spinnerStyles.spinner} /> : "SIGN IN"}
+        {spinner ? <div className={spinnerStyles.spinner} /> : 'SIGN IN'}
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default SignInForm;
+export default SignInForm

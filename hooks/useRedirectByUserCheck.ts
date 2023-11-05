@@ -1,44 +1,44 @@
-import { checkUserAuthFx } from "@/app/api/auth";
-import { setUser } from "@/context/user";
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { checkUserAuthFx } from '@/app/api/auth'
+import { setUser } from '@/context/user'
+import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 
 //Защита роутов
 const useRedirectByUserCheck = (isAuthPage = false) => {
-  const [shouldLoadContent, setShouldLoadContent] = useState(false);
-  const router = useRouter();
-  const shouldCheckAuth = useRef(true);
+  const [shouldLoadContent, setShouldLoadContent] = useState(false)
+  const router = useRouter()
+  const shouldCheckAuth = useRef(true)
 
   useEffect(() => {
     if (shouldCheckAuth.current) {
-      shouldCheckAuth.current = false;
-      checkUser();
+      shouldCheckAuth.current = false
+      checkUser()
     }
-  }, []);
+  }, [])
 
   const checkUser = async () => {
-    const user = await checkUserAuthFx("/users/login-check");
+    const user = await checkUserAuthFx('/users/login-check')
 
     if (isAuthPage) {
       if (!user) {
-        setShouldLoadContent(true);
-        return;
+        setShouldLoadContent(true)
+        return
       }
 
-      router.push("/dashboard");
-      return;
+      router.push('/dashboard')
+      return
     }
 
     if (user) {
-      setUser(user);
-      setShouldLoadContent(true);
-      return;
+      setUser(user)
+      setShouldLoadContent(true)
+      return
     }
 
-    router.push("/");
-  };
+    router.push('/')
+  }
 
-  return { shouldLoadContent };
-};
+  return { shouldLoadContent }
+}
 
-export default useRedirectByUserCheck;
+export default useRedirectByUserCheck

@@ -18,6 +18,6 @@ const PlusSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default PlusSvg;
+export default PlusSvg

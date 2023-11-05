@@ -1,36 +1,36 @@
-import Link from "next/link";
-import { useStore } from "effector-react";
-import { formatPrice } from "@/utils/common";
-import { ICartAlertProps } from "../../../types/dashboard";
-import { $mode } from "@/context/mode";
-import { $totalPrice } from "@/context/shopping-cart";
-import styles from "@/styles/dashboard/index.module.scss";
+import Link from 'next/link'
+import { useStore } from 'effector-react'
+import { formatPrice } from '@/utils/common'
+import { ICartAlertProps } from '../../../types/dashboard'
+import { $mode } from '@/context/mode'
+import { $totalPrice } from '@/context/shopping-cart'
+import styles from '@/styles/dashboard/index.module.scss'
 
 const CartAlert = ({ count, closeAlert }: ICartAlertProps) => {
-  const mode = useStore($mode);
-  const totalPrice = useStore($totalPrice);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const mode = useStore($mode)
+  const totalPrice = useStore($totalPrice)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   const showCountMessage = (count: string) => {
     if (
-      count.endsWith("11") ||
-      count.endsWith("12") ||
-      count.endsWith("13") ||
-      count.endsWith("14")
+      count.endsWith('11') ||
+      count.endsWith('12') ||
+      count.endsWith('13') ||
+      count.endsWith('14')
     ) {
-      return "товаров";
+      return 'товаров'
     }
 
-    if (count.endsWith("1")) {
-      return "товар";
+    if (count.endsWith('1')) {
+      return 'товар'
     }
 
-    if (count.endsWith("2") || count.endsWith("3") || count.endsWith("4")) {
-      return "товара";
+    if (count.endsWith('2') || count.endsWith('3') || count.endsWith('4')) {
+      return 'товара'
     }
 
-    return "товаров";
-  };
+    return 'товаров'
+  }
 
   return (
     <>
@@ -53,7 +53,7 @@ const CartAlert = ({ count, closeAlert }: ICartAlertProps) => {
         onClick={closeAlert}
       />
     </>
-  );
-};
+  )
+}
 
-export default CartAlert;
+export default CartAlert

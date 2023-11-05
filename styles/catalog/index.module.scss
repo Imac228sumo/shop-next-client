@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     margin-bottom: 48px;
-    font-family: "Raleway";
+    font-family: 'Raleway';
     font-weight: 500;
     font-size: 55px;
     color: #2d2d2d;
@@ -269,7 +269,7 @@
           padding: 0;
           padding-left: 30px;
           border: none;
-          background-image: url("/img/arrow-back.svg");
+          background-image: url('/img/arrow-back.svg');
           background-repeat: no-repeat;
           background-position: left center;
           background-position-y: 0;
@@ -318,7 +318,7 @@
           background-color: transparent;
           border: none;
           font-weight: 500;
-          font-family: "Roboto";
+          font-family: 'Roboto';
           cursor: pointer;
           font-size: 18px;
           color: #2d2d2d;
@@ -333,7 +333,7 @@
           }
 
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 4px;
             right: 0;
@@ -429,7 +429,7 @@
             }
 
             span:before {
-              content: "";
+              content: '';
               -webkit-appearance: none;
               background-color: transparent;
               border: 2px solid #f0f0f0;
@@ -449,7 +449,7 @@
             }
 
             input:checked + span:after {
-              content: "";
+              content: '';
               display: block;
               position: absolute;
               top: 4px;

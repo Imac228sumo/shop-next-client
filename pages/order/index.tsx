@@ -1,20 +1,20 @@
-import Head from "next/head";
-import { useCallback } from "react";
-import Layout from "@/components/layout/Layout";
-import useRedirectByUserCheck from "@/hooks/useRedirectByUserCheck";
-import OrderPage from "@/components/templates/OrderPage/OrderPage";
-import Breadcrumbs from "@/components/modules/Breadcrumbs/Breadcrumbs";
+import Head from 'next/head'
+import { useCallback } from 'react'
+import Layout from '@/components/layout/Layout'
+import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
+import OrderPage from '@/components/templates/OrderPage/OrderPage'
+import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
 function Order() {
-  const { shouldLoadContent } = useRedirectByUserCheck();
-  const getDefaultTextGenerator = useCallback(() => "Оформление заказа", []);
-  const getTextGenerator = useCallback((param: string) => ({})[param], []);
+  const { shouldLoadContent } = useRedirectByUserCheck()
+  const getDefaultTextGenerator = useCallback(() => 'Оформление заказа', [])
+  const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (
     <>
       <Head>
         <title>
-          Аква Тепмикс | {shouldLoadContent ? "Оформление заказа" : ""}
+          Аква Тепмикс | {shouldLoadContent ? 'Оформление заказа' : ''}
         </title>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -34,7 +34,7 @@ function Order() {
         </Layout>
       )}
     </>
-  );
+  )
 }
 
-export default Order;
+export default Order

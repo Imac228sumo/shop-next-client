@@ -1,4 +1,4 @@
-import { IWrappedComponentProps } from "@/types/common";
+import { IWrappedComponentProps } from '@/types/common'
 import {
   ForwardRefExoticComponent,
   MutableRefObject,
@@ -6,7 +6,7 @@ import {
   useEffect,
   useRef,
   useState,
-} from "react";
+} from 'react'
 
 export function withClickOutside(
   WrappedComponent: ForwardRefExoticComponent<
@@ -14,24 +14,23 @@ export function withClickOutside(
   >,
 ) {
   const Component = () => {
-    const [open, setOpen] = useState(false);
-    const ref = useRef() as MutableRefObject<HTMLDivElement>;
+    const [open, setOpen] = useState(false)
+    const ref = useRef() as MutableRefObject<HTMLDivElement>
 
     useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
         if (!ref.current.contains(e.target as HTMLDivElement)) {
-          setOpen(false);
+          setOpen(false)
         }
-      };
+      }
 
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside)
 
-      return () =>
-        document.removeEventListener("mousedown", handleClickOutside);
-    }, [ref]);
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [ref])
 
-    return <WrappedComponent open={open} setOpen={setOpen} ref={ref} />;
-  };
+    return <WrappedComponent open={open} setOpen={setOpen} ref={ref} />
+  }
 
-  return Component;
+  return Component
 }

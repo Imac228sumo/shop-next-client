@@ -1,7 +1,7 @@
-import { $mode } from "@/context/mode";
-import { IFilterCheckboxItem } from "@/types/catalog";
-import { useStore } from "effector-react";
-import styles from "@/styles/catalog/index.module.scss";
+import { $mode } from '@/context/mode'
+import { IFilterCheckboxItem } from '@/types/catalog'
+import { useStore } from 'effector-react'
+import styles from '@/styles/catalog/index.module.scss'
 
 const FilterCheckboxItem = ({
   title,
@@ -9,11 +9,11 @@ const FilterCheckboxItem = ({
   id,
   event,
 }: IFilterCheckboxItem) => {
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   const handleFilterChange = () =>
-    event({ checked: !checked, id } as IFilterCheckboxItem);
+    event({ checked: !checked, id } as IFilterCheckboxItem)
 
   return (
     <li
@@ -28,7 +28,7 @@ const FilterCheckboxItem = ({
         <span>{title}</span>
       </label>
     </li>
-  );
-};
+  )
+}
 
-export default FilterCheckboxItem;
+export default FilterCheckboxItem

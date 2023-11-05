@@ -1,35 +1,35 @@
 export interface IShoppingCartItem {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  in_stock: number;
-  parts_manufacturer: string;
-  boiler_manufacturer: string;
-  count: number;
-  total_price: number;
-  userId: number;
-  productId: number;
+  id: number
+  name: string
+  price: number
+  image: string
+  in_stock: number
+  parts_manufacturer: string
+  boiler_manufacturer: string
+  count: number
+  total_price: number
+  userId: number
+  productId: number
 }
 
 export interface IAddToCartFx {
-  url: string;
-  username: string;
-  productId: number;
+  url: string
+  username: string
+  productId: number
 }
 
 export interface IUpdateCartItemFx {
-  url: string;
+  url: string
   payload: {
-    total_price?: number;
-    count?: number;
-  };
+    total_price?: number
+    count?: number
+  }
 }
 
 export interface ICartItemCounterProps {
-  totalCount: number;
-  productId: number;
-  initialCount: number;
-  increasePrice: VoidFunction;
-  decreasePrice: VoidFunction;
+  totalCount: number
+  productId: number
+  initialCount: number
+  increasePrice: VoidFunction
+  decreasePrice: VoidFunction
 }

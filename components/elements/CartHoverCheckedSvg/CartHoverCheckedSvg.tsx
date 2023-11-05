@@ -37,6 +37,6 @@ const CartHoverCheckedSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default CartHoverCheckedSvg;
+export default CartHoverCheckedSvg

@@ -1,58 +1,58 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { getBestsellersOrNewPartsFx } from "@/app/api/boilerParts";
-import BrandsSlider from "@/components/modules/DashboardPage/BrandsSlider";
-import { IBoilerParts } from "@/types/boilerparts";
-import styles from "@/styles/dashboard/index.module.scss";
-import { useStore } from "effector-react";
-import { $mode } from "@/context/mode";
-import DashboardSlider from "@/components/modules/DashboardPage/DashboardSlider";
-import { $shoppingCart } from "@/context/shopping-cart";
-import { AnimatePresence, motion } from "framer-motion";
-import CartAlert from "@/components/modules/DashboardPage/CartAlert";
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import { getBestsellersOrNewPartsFx } from '@/app/api/boilerParts'
+import BrandsSlider from '@/components/modules/DashboardPage/BrandsSlider'
+import { IBoilerParts } from '@/types/boilerparts'
+import styles from '@/styles/dashboard/index.module.scss'
+import { useStore } from 'effector-react'
+import { $mode } from '@/context/mode'
+import DashboardSlider from '@/components/modules/DashboardPage/DashboardSlider'
+import { $shoppingCart } from '@/context/shopping-cart'
+import { AnimatePresence, motion } from 'framer-motion'
+import CartAlert from '@/components/modules/DashboardPage/CartAlert'
 
 const DashboardPage = () => {
-  const [newParts, setNewParts] = useState<IBoilerParts>({} as IBoilerParts);
+  const [newParts, setNewParts] = useState<IBoilerParts>({} as IBoilerParts)
   const [bestsellers, setBestsellers] = useState<IBoilerParts>(
     {} as IBoilerParts,
-  );
-  const [spinner, setSpinner] = useState(false);
-  const shoppingCart = useStore($shoppingCart);
-  const [showAlert, setShowAlert] = useState(!!shoppingCart.length);
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  )
+  const [spinner, setSpinner] = useState(false)
+  const shoppingCart = useStore($shoppingCart)
+  const [showAlert, setShowAlert] = useState(!!shoppingCart.length)
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   useEffect(() => {
-    loadBoilerParts();
-  }, []);
+    loadBoilerParts()
+  }, [])
 
   useEffect(() => {
     if (shoppingCart.length) {
-      setShowAlert(true);
-      return;
+      setShowAlert(true)
+      return
     }
 
-    setShowAlert(false);
-  }, [shoppingCart.length]);
+    setShowAlert(false)
+  }, [shoppingCart.length])
 
   const loadBoilerParts = async () => {
     try {
-      setSpinner(true);
+      setSpinner(true)
       const bestsellers = await getBestsellersOrNewPartsFx(
-        "/products/bestsellers",
-      );
-      const newParts = await getBestsellersOrNewPartsFx("/products/new");
+        '/products/bestsellers',
+      )
+      const newParts = await getBestsellersOrNewPartsFx('/products/new')
 
-      setBestsellers(bestsellers);
-      setNewParts(newParts);
+      setBestsellers(bestsellers)
+      setNewParts(newParts)
     } catch (error) {
-      toast.error((error as Error).message);
+      toast.error((error as Error).message)
     } finally {
-      setSpinner(false);
+      setSpinner(false)
     }
-  };
+  }
 
-  const closeAlert = () => setShowAlert(false);
+  const closeAlert = () => setShowAlert(false)
 
   return (
     <section className={styles.dashboard}>
@@ -110,7 +110,7 @@ const DashboardPage = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage

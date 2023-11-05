@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { useStore } from "effector-react";
-import { $mode } from "@/context/mode";
-import styles from "@/styles/about/index.module.scss";
+import { useStore } from 'effector-react'
+import { $mode } from '@/context/mode'
+import styles from '@/styles/about/index.module.scss'
 
 const AboutPage = () => {
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   return (
     <section className={styles.about}>
@@ -38,7 +38,7 @@ const AboutPage = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AboutPage;
+export default AboutPage

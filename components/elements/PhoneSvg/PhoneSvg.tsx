@@ -15,6 +15,6 @@ const PhoneSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default PhoneSvg;
+export default PhoneSvg

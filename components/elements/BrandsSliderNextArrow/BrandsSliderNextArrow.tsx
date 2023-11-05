@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
-import { IBrandsSliderArrow } from "@/types/elements";
-import BrandSliderArrowSvg from "../BrandsSliderArrow/BrandsSliderArrow";
-import styles from "@/styles/dashboard/index.module.scss";
+import { IBrandsSliderArrow } from '@/types/elements'
+import BrandSliderArrowSvg from '../BrandsSliderArrow/BrandsSliderArrow'
+import styles from '@/styles/dashboard/index.module.scss'
 
 const BrandsSliderNextArrow = (props: IBrandsSliderArrow) => (
   <button
@@ -12,6 +12,6 @@ const BrandsSliderNextArrow = (props: IBrandsSliderArrow) => (
       <BrandSliderArrowSvg />
     </span>
   </button>
-);
+)
 
-export default BrandsSliderNextArrow;
+export default BrandsSliderNextArrow

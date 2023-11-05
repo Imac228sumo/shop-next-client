@@ -1,6 +1,6 @@
-import { ILayoutProps } from "@/types/common";
-import Header from "../modules/Header/Header";
-import Footer from "../modules/Footer/Footer";
+import { ILayoutProps } from '@/types/common'
+import Header from '../modules/Header/Header'
+import Footer from '../modules/Footer/Footer'
 
 const Layout = ({ children }: ILayoutProps) => (
   <>
@@ -8,6 +8,6 @@ const Layout = ({ children }: ILayoutProps) => (
     {children}
     <Footer />
   </>
-);
+)
 
-export default Layout;
+export default Layout

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 const Custom404 = () => (
   <div className="flex-container">
@@ -22,6 +22,6 @@ const Custom404 = () => (
       </Link>
     </div>
   </div>
-);
+)
 
-export default Custom404;
+export default Custom404

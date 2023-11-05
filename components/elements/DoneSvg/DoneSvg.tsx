@@ -15,6 +15,6 @@ const DoneSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default DoneSvg;
+export default DoneSvg

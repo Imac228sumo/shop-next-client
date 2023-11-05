@@ -72,7 +72,7 @@
 
         &__text {
           max-width: 138px;
-          font-family: "Raleway";
+          font-family: 'Raleway';
           font-weight: 700;
           font-size: 18px;
           color: #fafbfc;
@@ -216,13 +216,13 @@
           }
 
           .footer__top__item__title::before {
-            content: "";
+            content: '';
             width: 12px;
             height: 6px;
             position: absolute;
             top: 8px;
             right: 0;
-            background-image: url("/img/arrow.svg");
+            background-image: url('/img/arrow.svg');
             background-repeat: no-repeat;
             background-position: right center;
             transition: transform 0.3s ease-in-out;
@@ -417,19 +417,19 @@
           }
 
           &_vk {
-            background-image: url("/img/vk.svg");
+            background-image: url('/img/vk.svg');
           }
 
           &_fb {
-            background-image: url("/img/fb.svg");
+            background-image: url('/img/fb.svg');
           }
 
           &_inst {
-            background-image: url("/img/inst.svg");
+            background-image: url('/img/inst.svg');
           }
 
           &_ytb {
-            background-image: url("/img/ytb.svg");
+            background-image: url('/img/ytb.svg');
           }
         }
       }

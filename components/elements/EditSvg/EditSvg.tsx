@@ -27,6 +27,6 @@ const EditSvg = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
-export default EditSvg;
+export default EditSvg

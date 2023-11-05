@@ -1,23 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
-import { useStore } from "effector-react";
-import Link from "next/link";
-import { IShoppingCartItem } from "@/types/shopping-cart";
-import { usePrice } from "@/hooks/usePrice";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { $mode } from "@/context/mode";
-import CartItemCounter from "@/components/elements/CartItemCounter/CartItemCounter";
-import { formatPrice } from "@/utils/common";
-import spinnerStyles from "@/styles/spinner/index.module.scss";
-import styles from "@/styles/order/index.module.scss";
+import { useStore } from 'effector-react'
+import Link from 'next/link'
+import { IShoppingCartItem } from '@/types/shopping-cart'
+import { usePrice } from '@/hooks/usePrice'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { $mode } from '@/context/mode'
+import CartItemCounter from '@/components/elements/CartItemCounter/CartItemCounter'
+import { formatPrice } from '@/utils/common'
+import spinnerStyles from '@/styles/spinner/index.module.scss'
+import styles from '@/styles/order/index.module.scss'
 
 const OrderItem = ({ item }: { item: IShoppingCartItem }) => {
-  const mode = useStore($mode);
-  const isMedia1160 = useMediaQuery(1160);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const mode = useStore($mode)
+  const isMedia1160 = useMediaQuery(1160)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
   const spinnerDarkModeClass =
-    mode === "dark" ? "" : `${spinnerStyles.dark_mode}`;
+    mode === 'dark' ? '' : `${spinnerStyles.dark_mode}`
   const { price, spinner, decreasePrice, deleteCartItem, increasePrice } =
-    usePrice(item.count, item.productId, item.price);
+    usePrice(item.count, item.productId, item.price)
 
   return (
     <li className={styles.order__cart__list__item}>
@@ -31,7 +31,7 @@ const OrderItem = ({ item }: { item: IShoppingCartItem }) => {
               className={`${styles.order__cart__list__item__text} ${darkModeClass}`}
             >
               <span>
-                {item.name.replace(".", "")}, {item.parts_manufacturer},{" "}
+                {item.name.replace('.', '')}, {item.parts_manufacturer},{' '}
                 {item.boiler_manufacturer}
               </span>
             </a>
@@ -79,15 +79,15 @@ const OrderItem = ({ item }: { item: IShoppingCartItem }) => {
           {spinner ? (
             <span
               className={`${spinnerStyles.spinner} ${spinnerDarkModeClass}`}
-              style={{ top: "-13px", left: "-30px", width: 25, height: 25 }}
+              style={{ top: '-13px', left: '-30px', width: 25, height: 25 }}
             />
           ) : (
-            "Удалить"
+            'Удалить'
           )}
         </button>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default OrderItem;
+export default OrderItem

@@ -1,22 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import { $mode } from "@/context/mode";
-import { useStore } from "effector-react";
-import Link from "next/link";
-import DeleteSvg from "@/components/elements/DeleteSvg/DeleteSvg";
-import { IShoppingCartItem } from "../../../../types/shopping-cart";
-import { formatPrice } from "@/utils/common";
-import CartItemCounter from "@/components/elements/CartItemCounter/CartItemCounter";
-import { usePrice } from "@/hooks/usePrice";
-import styles from "@/styles/cartPopup/index.module.scss";
-import spinnerStyles from "@/styles/spinner/index.module.scss";
+import { $mode } from '@/context/mode'
+import { useStore } from 'effector-react'
+import Link from 'next/link'
+import DeleteSvg from '@/components/elements/DeleteSvg/DeleteSvg'
+import { IShoppingCartItem } from '../../../../types/shopping-cart'
+import { formatPrice } from '@/utils/common'
+import CartItemCounter from '@/components/elements/CartItemCounter/CartItemCounter'
+import { usePrice } from '@/hooks/usePrice'
+import styles from '@/styles/cartPopup/index.module.scss'
+import spinnerStyles from '@/styles/spinner/index.module.scss'
 
 const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
   const spinnerDarkModeClass =
-    mode === "dark" ? "" : `${spinnerStyles.dark_mode}`;
+    mode === 'dark' ? '' : `${spinnerStyles.dark_mode}`
   const { price, spinner, decreasePrice, deleteCartItem, increasePrice } =
-    usePrice(item.count, item.productId, item.price);
+    usePrice(item.count, item.productId, item.price)
 
   return (
     <li className={styles.cart__popup__list__item}>
@@ -29,7 +29,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
             className={`${styles.cart__popup__list__item__text} ${darkModeClass}`}
           >
             <span>
-              {item.name.replace(".", "")}, {item.parts_manufacturer},{" "}
+              {item.name.replace('.', '')}, {item.parts_manufacturer},{' '}
               {item.boiler_manufacturer}
             </span>
           </a>
@@ -68,7 +68,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
         </span>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default CartPopupItem;
+export default CartPopupItem

@@ -21,6 +21,6 @@ const MailSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default MailSvg;
+export default MailSvg

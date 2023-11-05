@@ -27,7 +27,7 @@
     transition: background-color ease 0.3s;
 
     &::before {
-      content: url("https://shivanarrthine.com/public/images/icons/moon.svg");
+      content: url('https://shivanarrthine.com/public/images/icons/moon.svg');
       display: block;
       position: absolute;
       z-index: 2;
@@ -51,7 +51,7 @@
 
       &:checked::before {
         left: 32px;
-        content: url("https://shivanarrthine.com/public/images/icons/sun.svg");
+        content: url('https://shivanarrthine.com/public/images/icons/sun.svg');
         background: #fff;
       }
     }

@@ -22,6 +22,6 @@ const CartHoverSvg = () => (
       fill="#4E4C4C"
     />
   </svg>
-);
+)
 
-export default CartHoverSvg;
+export default CartHoverSvg

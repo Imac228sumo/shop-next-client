@@ -1,48 +1,48 @@
 /* eslint-disable max-len */
-import { useStore } from "effector-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
-import { useMemo } from "react";
-import { $mode } from "@/context/mode";
-import Crumb from "./Crumb";
-import styles from "@/styles/breadcrumbs/index.module.scss";
+import { useStore } from 'effector-react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { ParsedUrlQuery } from 'querystring'
+import { useMemo } from 'react'
+import { $mode } from '@/context/mode'
+import Crumb from './Crumb'
+import styles from '@/styles/breadcrumbs/index.module.scss'
 
 const generatePathParts = (pathStr: string) => {
-  const pathWithoutQuery = pathStr.split("?")[0];
-  return pathWithoutQuery.split("/").filter((v) => v.length > 0);
-};
+  const pathWithoutQuery = pathStr.split('?')[0]
+  return pathWithoutQuery.split('/').filter((v) => v.length > 0)
+}
 
 const Breadcrumbs = ({
   getTextGenerator,
   getDefaultTextGenerator,
 }: {
-  getTextGenerator: (arg0: string, query: ParsedUrlQuery) => void;
-  getDefaultTextGenerator: (arg0: string, href: string) => string;
+  getTextGenerator: (arg0: string, query: ParsedUrlQuery) => void
+  getDefaultTextGenerator: (arg0: string, href: string) => string
 }) => {
-  const router = useRouter();
-  const mode = useStore($mode);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+  const router = useRouter()
+  const mode = useStore($mode)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   const breadcrumbs = useMemo(
     function generateBreadcrumbs() {
-      const asPathNestedRoutes = generatePathParts(router.asPath);
-      const pathnameNestedRoutes = generatePathParts(router.pathname);
+      const asPathNestedRoutes = generatePathParts(router.asPath)
+      const pathnameNestedRoutes = generatePathParts(router.pathname)
 
       const crumbList = asPathNestedRoutes.map((subpath, idx) => {
         const param = pathnameNestedRoutes[idx]
-          .replace("[", "")
-          .replace("]", "");
+          .replace('[', '')
+          .replace(']', '')
 
-        const href = "/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
+        const href = '/' + asPathNestedRoutes.slice(0, idx + 1).join('/')
         return {
           href,
           textGenerator: getTextGenerator(param, router.query),
           text: getDefaultTextGenerator(subpath, href),
-        };
-      });
+        }
+      })
 
-      return [...crumbList];
+      return [...crumbList]
     },
     [
       router.asPath,
@@ -51,7 +51,7 @@ const Breadcrumbs = ({
       getTextGenerator,
       getDefaultTextGenerator,
     ],
-  );
+  )
 
   return (
     <div className="container">
@@ -91,12 +91,12 @@ const Breadcrumbs = ({
               />
             </li>
           ) : (
-            ""
+            ''
           ),
         )}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Breadcrumbs;
+export default Breadcrumbs

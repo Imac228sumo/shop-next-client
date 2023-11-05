@@ -1,5 +1,5 @@
-import { CustomArrowProps } from "react-slick";
+import { CustomArrowProps } from 'react-slick'
 
 export interface IBrandsSliderArrow extends CustomArrowProps {
-  modeClass: string;
+  modeClass: string
 }

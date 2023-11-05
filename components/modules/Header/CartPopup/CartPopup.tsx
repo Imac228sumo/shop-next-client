@@ -1,41 +1,41 @@
-import { useStore } from "effector-react";
-import { forwardRef, useEffect } from "react";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import { AnimatePresence, motion } from "framer-motion";
-import { $mode } from "@/context/mode";
-import { IWrappedComponentProps } from "@/types/common";
-import { withClickOutside } from "@/utils/withClickOutside";
-import ShoppingCartSvg from "@/components/elements/ShoppingCartSvg/ShoppingCartSvg";
+import { useStore } from 'effector-react'
+import { forwardRef, useEffect } from 'react'
+import Link from 'next/link'
+import { toast } from 'react-toastify'
+import { AnimatePresence, motion } from 'framer-motion'
+import { $mode } from '@/context/mode'
+import { IWrappedComponentProps } from '@/types/common'
+import { withClickOutside } from '@/utils/withClickOutside'
+import ShoppingCartSvg from '@/components/elements/ShoppingCartSvg/ShoppingCartSvg'
 import {
   $disableCart,
   $shoppingCart,
   $totalPrice,
   setShoppingCart,
   setTotalPrice,
-} from "@/context/shopping-cart";
-import CartPopupItem from "./CartPopupItem";
-import { getCartItemsFx } from "@/app/api/shopping-cart";
-import { $user } from "@/context/user";
-import styles from "@/styles/cartPopup/index.module.scss";
-import { formatPrice } from "@/utils/common";
+} from '@/context/shopping-cart'
+import CartPopupItem from './CartPopupItem'
+import { getCartItemsFx } from '@/app/api/shopping-cart'
+import { $user } from '@/context/user'
+import styles from '@/styles/cartPopup/index.module.scss'
+import { formatPrice } from '@/utils/common'
 
 const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
   ({ open, setOpen }, ref) => {
-    const mode = useStore($mode);
-    const user = useStore($user);
-    const totalPrice = useStore($totalPrice);
-    const disableCart = useStore($disableCart);
-    const shoppingCart = useStore($shoppingCart);
-    const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
+    const mode = useStore($mode)
+    const user = useStore($user)
+    const totalPrice = useStore($totalPrice)
+    const disableCart = useStore($disableCart)
+    const shoppingCart = useStore($shoppingCart)
+    const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
     const toggleCartDropDown = () => {
-      setOpen(!open);
-    };
+      setOpen(!open)
+    }
 
     useEffect(() => {
-      loadCartItems();
-    }, []);
+      loadCartItems()
+    }, [])
 
     useEffect(() => {
       setTotalPrice(
@@ -43,25 +43,25 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
           (defaultCount, item) => defaultCount + item.total_price,
           0,
         ),
-      );
-    }, [shoppingCart]);
+      )
+    }, [shoppingCart])
 
     const loadCartItems = async () => {
       try {
-        const cartItems = await getCartItemsFx(`/shopping-cart/${user.userId}`);
+        const cartItems = await getCartItemsFx(`/shopping-cart/${user.userId}`)
 
-        setShoppingCart(cartItems);
+        setShoppingCart(cartItems)
       } catch (error) {
-        toast.error((error as Error).message);
+        toast.error((error as Error).message)
       }
-    };
+    }
 
     return (
       <div className={styles.cart} ref={ref}>
         {disableCart ? (
           <button
             className={`${styles.cart__btn} ${darkModeClass}`}
-            style={{ cursor: "auto" }}
+            style={{ cursor: 'auto' }}
           >
             <span className={styles.cart__svg}>
               <ShoppingCartSvg />
@@ -91,7 +91,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
               className={`${styles.cart__popup} ${darkModeClass}`}
-              style={{ transformOrigin: "right top" }}
+              style={{ transformOrigin: 'right top' }}
             >
               <h3 className={styles.cart__popup__title}>Корзина</h3>
               <ul className={styles.cart__popup__list}>
@@ -133,10 +133,10 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
           )}
         </AnimatePresence>
       </div>
-    );
+    )
   },
-);
+)
 
-CartPopup.displayName = "CartPopup";
+CartPopup.displayName = 'CartPopup'
 
-export default withClickOutside(CartPopup);
+export default withClickOutside(CartPopup)

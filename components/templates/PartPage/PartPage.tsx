@@ -1,58 +1,58 @@
-import { useStore } from "effector-react";
-import { toast } from "react-toastify";
-import { useEffect } from "react";
-import { $boilerPart } from "@/context/boilerPart";
-import { $mode } from "@/context/mode";
-import PartImagesList from "@/components/modules/PartPage/PartImagesList";
-import { formatPrice } from "@/utils/common";
-import { $shoppingCart } from "@/context/shopping-cart";
-import CartHoverCheckedSvg from "@/components/elements/CartHoverCheckedSvg/CartHoverCheckedSvg";
-import CartHoverSvg from "@/components/elements/CartHoverSvg/CartHoverSvg";
-import spinnerStyles from "@/styles/spinner/index.module.scss";
-import { toggleCartItem } from "@/utils/shopping-cart";
-import { $user } from "@/context/user";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import PartTabs from "@/components/modules/PartPage/PartTabs";
-import DashboardSlider from "@/components/modules/DashboardPage/DashboardSlider";
-import { getBoilerPartsFx } from "@/app/api/boilerParts";
+import { useStore } from 'effector-react'
+import { toast } from 'react-toastify'
+import { useEffect } from 'react'
+import { $boilerPart } from '@/context/boilerPart'
+import { $mode } from '@/context/mode'
+import PartImagesList from '@/components/modules/PartPage/PartImagesList'
+import { formatPrice } from '@/utils/common'
+import { $shoppingCart } from '@/context/shopping-cart'
+import CartHoverCheckedSvg from '@/components/elements/CartHoverCheckedSvg/CartHoverCheckedSvg'
+import CartHoverSvg from '@/components/elements/CartHoverSvg/CartHoverSvg'
+import spinnerStyles from '@/styles/spinner/index.module.scss'
+import { toggleCartItem } from '@/utils/shopping-cart'
+import { $user } from '@/context/user'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import PartTabs from '@/components/modules/PartPage/PartTabs'
+import DashboardSlider from '@/components/modules/DashboardPage/DashboardSlider'
+import { getBoilerPartsFx } from '@/app/api/boilerParts'
 import {
   $boilerParts,
   setBoilerParts,
   setBoilerPartsByPopularity,
-} from "@/context/boilerParts";
-import PartAccordion from "@/components/modules/PartPage/PartAccordion";
-import { removeFromCartFx } from "@/app/api/shopping-cart";
-import styles from "@/styles/part/index.module.scss";
+} from '@/context/boilerParts'
+import PartAccordion from '@/components/modules/PartPage/PartAccordion'
+import { removeFromCartFx } from '@/app/api/shopping-cart'
+import styles from '@/styles/part/index.module.scss'
 
 const PartPage = () => {
-  const mode = useStore($mode);
-  const user = useStore($user);
-  const isMobile = useMediaQuery(850);
-  const boilerPart = useStore($boilerPart);
-  const boilerParts = useStore($boilerParts);
-  const cartItems = useStore($shoppingCart);
-  const darkModeClass = mode === "dark" ? `${styles.dark_mode}` : "";
-  const isInCart = cartItems.some((item) => item.productId === boilerPart.id);
-  const spinnerToggleCart = useStore(removeFromCartFx.pending);
-  const spinnerSlider = useStore(getBoilerPartsFx.pending);
+  const mode = useStore($mode)
+  const user = useStore($user)
+  const isMobile = useMediaQuery(850)
+  const boilerPart = useStore($boilerPart)
+  const boilerParts = useStore($boilerParts)
+  const cartItems = useStore($shoppingCart)
+  const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
+  const isInCart = cartItems.some((item) => item.productId === boilerPart.id)
+  const spinnerToggleCart = useStore(removeFromCartFx.pending)
+  const spinnerSlider = useStore(getBoilerPartsFx.pending)
 
   useEffect(() => {
-    loadBoilerPart();
-  }, []);
+    loadBoilerPart()
+  }, [])
 
   const loadBoilerPart = async () => {
     try {
-      const data = await getBoilerPartsFx("/products?limit=20&offset=0");
+      const data = await getBoilerPartsFx('/products?limit=20&offset=0')
 
-      setBoilerParts(data);
-      setBoilerPartsByPopularity();
+      setBoilerParts(data)
+      setBoilerPartsByPopularity()
     } catch (error) {
-      toast.error((error as Error).message);
+      toast.error((error as Error).message)
     }
-  };
+  }
 
   const toggleToCart = () =>
-    toggleCartItem(user.username, boilerPart.id, isInCart);
+    toggleCartItem(user.username, boilerPart.id, isInCart)
 
   return (
     <section>
@@ -83,14 +83,14 @@ const PartPage = () => {
               </span>
               <button
                 className={`${styles.part__info__btn} ${
-                  isInCart ? styles.in_cart : ""
+                  isInCart ? styles.in_cart : ''
                 }`}
                 onClick={toggleToCart}
               >
                 {spinnerToggleCart ? (
                   <span
                     className={spinnerStyles.spinner}
-                    style={{ top: 10, left: "45%" }}
+                    style={{ top: 10, left: '45%' }}
                   />
                 ) : (
                   <>
@@ -154,7 +154,7 @@ const PartPage = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default PartPage;
+export default PartPage

@@ -1,9 +1,9 @@
-import { createDomain } from "effector-next";
+import { createDomain } from 'effector-next'
 
-const header = createDomain();
+const header = createDomain()
 
-export const setSearchInputZIndex = header.createEvent<number>();
+export const setSearchInputZIndex = header.createEvent<number>()
 
 export const $searchInputZIndex = header
   .createStore<number>(1)
-  .on(setSearchInputZIndex, (_, zIndex) => zIndex);
+  .on(setSearchInputZIndex, (_, zIndex) => zIndex)

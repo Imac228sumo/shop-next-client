@@ -14,6 +14,6 @@ const FilterSvg = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default FilterSvg;
+export default FilterSvg

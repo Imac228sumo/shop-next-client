@@ -1,5 +1,5 @@
-import Link from "next/link";
-import styles from "@/styles/footer/index.module.scss";
+import Link from 'next/link'
+import styles from '@/styles/footer/index.module.scss'
 
 const OnlineStoreContent = () => (
   <ul className={styles.footer__top__item__list}>
@@ -16,6 +16,6 @@ const OnlineStoreContent = () => (
       </Link>
     </li>
   </ul>
-);
+)
 
-export default OnlineStoreContent;
+export default OnlineStoreContent
